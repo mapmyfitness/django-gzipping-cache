@@ -2,8 +2,8 @@ from django.core.cache import get_cache
 import zlib
 
 
-# We don't inherit from BaseCache because we want __getattr__ to proxy everything
-# to the real cache that we don't want to intercept
+# We don't inherit from BaseCache because we want __getattr__
+# to proxy everything to the real cache that we don't want to intercept
 class GzippingCache(object):
     def __init__(self, params):
         super(GzippingCache, self).__init__()
