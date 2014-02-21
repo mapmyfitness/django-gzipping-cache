@@ -1,0 +1,9 @@
+*.pyc
+*.DS_Store
+*~
+build
+.coverage
+dist
+django_gzipping_cache.egg-info
+htmlcov
+.tox
