@@ -65,7 +65,7 @@ GzippingCache takes 2 additional parameters, the default configuration is::
         ...
     })
 
-COMPRESS_LEVEL is the number from 1-9 that is tells zlib how aggressively to compress,
+COMPRESS_LEVEL is the number from 1-9 that tells zlib how aggressively to compress,
 higher numbers take more CPU in order to achieve smaller output.
 
 PASS_UNCOMPRESSED is for storing compressed and uncompressed data in the same
