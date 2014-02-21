@@ -5,9 +5,9 @@ import zlib
 # We don't inherit from BaseCache because we want __getattr__
 # to proxy everything to the real cache that we don't want to intercept
 class GzippingCache(object):
-    def __init__(self, name, params):
+    def __init__(self, location, params):
         super(GzippingCache, self).__init__()
-        self._cache = get_cache(params.get('LOCATION'))
+        self._cache = get_cache(location)
         self._compress_level = params.get('COMPRESS_LEVEL', 6)
         self._pass_uncompressed = params.get('PASS_UNCOMPRESSED', False)
 
