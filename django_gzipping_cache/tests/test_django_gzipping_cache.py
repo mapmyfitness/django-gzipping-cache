@@ -15,7 +15,7 @@ class TestCacheFunctions(unittest.TestCase):
         self.underlying = MagicMock()
         get_cache.return_value = self.underlying
         params = {'LOCATION': 'foo', 'PASS_UNCOMPRESSED': True}
-        self.cache = GzippingCache(params)
+        self.cache = GzippingCache('name', params)
 
     def test_add_passes_through(self):
         self.cache.add('foo', 'bar')
