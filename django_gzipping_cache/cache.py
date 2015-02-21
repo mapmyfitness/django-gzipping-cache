@@ -1,4 +1,5 @@
 from django.core.cache import get_cache
+import pickle
 import zlib
 
 
@@ -14,13 +15,13 @@ class GzippingCache(object):
     def gzip(self, value):
         if not value:
             return None
-        return zlib.compress(value, self._compress_level)
+        return zlib.compress(pickle.dumps(value), self._compress_level)
 
     def ungzip(self, value):
         if not value:
             return None
         try:
-            return zlib.decompress(value)
+            return pickle.loads(zlib.decompress(value))
         except zlib.error:
             if self._pass_uncompressed:
                 return value

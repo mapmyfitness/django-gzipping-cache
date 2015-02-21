@@ -5,6 +5,8 @@ with patch('django.conf.settings') as settings:
     settings.CACHES = {
         'default': {'BACKEND': 'django.core.cache.backends.dummy.DummyCache'}
     }
+    settings.DEFAULT_CHARSET = 'utf-8'
+    from django.http import HttpResponse
     from ..cache import GzippingCache
 
 
@@ -61,3 +63,11 @@ class TestCacheFunctions(unittest.TestCase):
             self.underlying.get.return_value = stored_value
             end_value = self.cache.get('meta')
             self.assertEqual(start_value, end_value)
+
+    def test_round_trip_page(self):
+        start_value = HttpResponse(content="example")
+        self.cache.set('meta', start_value)
+        stored_value = self.underlying.set.call_args[0][1]
+        self.underlying.get.return_value = stored_value
+        end_value = self.cache.get('meta')
+        self.assertEqual(start_value.content, end_value.content)
