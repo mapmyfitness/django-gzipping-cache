@@ -2,7 +2,7 @@ from setuptools import setup, find_packages
 
 setup(
     name='django-gzipping-cache',
-    version='0.1.0',
+    version='0.1.1',
     description='A wrapper for django caches that gzips cached values',
     long_description=open('README.rst').read(),
     author='MapMyFitness',
@@ -27,6 +27,7 @@ setup(
         'Programming Language :: Python :: 2',
         'Programming Language :: Python :: 2.6',
         'Programming Language :: Python :: 2.7',
+        'Programming Language :: Python :: 3',
         'Topic :: Software Development :: Libraries :: Python Modules',
     ],
 )
